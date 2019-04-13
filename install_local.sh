@@ -46,10 +46,10 @@ if [ ! -f $WORKER_LIST ]; then
 fi
 
 ## Setup Kubernetes
-./kubernetes_install.sh
+./deploys/kubernetes_install.sh
 
 ## Setup Weavenet
-./weavenet_setup.sh
+./deploys/weavenet_setup.sh
 #wait_for_podnetwork
 
 
@@ -65,15 +65,16 @@ for LINE in $(cat $WORKER_LIST | grep -vE "^#"); do
 	WORKERNAME=`echo $LINE | awk -F"/" '{print $NF}'`
 
 	echo "[worker:$WORKERNAME] Deploying..."
-	ssh $WORKERNAME -o "StrictHostKeyChecking no" "bash -s" < mkdir /mnt/data
-	ssh $WORKERNAME -o "StrictHostKeyChecking no" "bash -s" < ./kubernetes_install.sh true $IP:6443 $TOKEN $HASH
+	apt-get install -y sshpass
+	sshpass -p '1234' ssh $WORKERNAME -o "StrictHostKeyChecking no" "bash -s" < mkdir /mnt/data
+	sshpass -p '1234' ssh $WORKERNAME -o "StrictHostKeyChecking no" "bash -s" < ./kubernetes_install.sh true $IP:6443 $TOKEN $HASH
 	wait_for_worker
 
 	echo "[worker:$WORKERNAME] Deployment is completed."
 done
 
 ## Setup Fission
-./fission_deploy.sh
+./deploys/fission_deploy.sh
 
 ## Setup samples
 
