@@ -46,10 +46,10 @@ if [ ! -f $WORKER_LIST ]; then
 fi
 
 ## Setup Kubernetes
-./kubernetes_install.sh
+./deploys/kubernetes_install.sh
 
 ## Setup Weavenet
-./weavenet_setup.sh
+./deploys/weavenet_setup.sh
 #wait_for_podnetwork
 
 
@@ -73,7 +73,7 @@ for LINE in $(cat $WORKER_LIST | grep -vE "^#"); do
 done
 
 ## Setup Fission
-./fission_deploy.sh
+./deploys/fission_deploy.sh
 
 ## Setup samples
 
