@@ -2,10 +2,10 @@
 
 mkdir /mnt/data
 
-kubectl create -f ./storageclass.yaml
-kubectl create -f ./fission-storage1.yaml
-kubectl create -f ./fission-storage2.yaml
-kubectl create -f ./fission-storage3.yaml
+kubectl create -f ./deploys/storageclass.yaml
+kubectl create -f ./deploys/fission-storage1.yaml
+kubectl create -f ./deploys/fission-storage2.yaml
+kubectl create -f ./deploys/fission-storage3.yaml
 
 curl -LO https://storage.googleapis.com/kubernetes-helm/helm-v2.11.0-linux-amd64.tar.gz
 

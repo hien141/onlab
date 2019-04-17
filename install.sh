@@ -66,7 +66,7 @@ for LINE in $(cat $WORKER_LIST | grep -vE "^#"); do
 
 	echo "[worker:$WORKERNAME] Deploying..."
 	ssh $WORKERNAME -o "StrictHostKeyChecking no" "bash -s" < mkdir /mnt/data
-	ssh $WORKERNAME -o "StrictHostKeyChecking no" "bash -s" < ./kubernetes_install.sh true $IP:6443 $TOKEN $HASH
+	ssh $WORKERNAME -o "StrictHostKeyChecking no" "bash -s" < ./deploys/kubernetes_install.sh true $IP:6443 $TOKEN $HASH
 	wait_for_worker
 
 	echo "[worker:$WORKERNAME] Deployment is completed."
