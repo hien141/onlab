@@ -67,7 +67,7 @@ for LINE in $(cat $WORKER_LIST | grep -vE "^#"); do
 	echo "[worker:$WORKERNAME] Deploying..."
 	apt-get install -y sshpass
 	sshpass -p '1234' ssh $WORKERNAME -o "StrictHostKeyChecking no" "bash -s" < mkdir /mnt/data
-	sshpass -p '1234' ssh $WORKERNAME -o "StrictHostKeyChecking no" "bash -s" < ./kubernetes_install.sh true $IP:6443 $TOKEN $HASH
+	sshpass -p '1234' ssh $WORKERNAME -o "StrictHostKeyChecking no" "bash -s" < ./deploys/kubernetes_install.sh true $IP:6443 $TOKEN $HASH
 	wait_for_worker
 
 	echo "[worker:$WORKERNAME] Deployment is completed."
