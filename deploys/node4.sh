@@ -1,8 +1,7 @@
 #!/bin/bash
 
-sudo add-apt-repository ppa:gophers/archive
+sudo add-apt-repository ppa:longsleep/golang-backports
+
+sudo apt-get update
 
 sudo apt-get install golang-go
-sudo apt-get install golang-1.11-go
-
-go get -u github.com/rakyll/hey

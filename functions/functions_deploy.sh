@@ -26,6 +26,6 @@ fission httptrigger create --url /hellojava --method GET --function hellojava
 fission httptrigger create --url /hellogo --method GET --function hellogo
 fission httptrigger create --url /hellopython --method GET --function hellopython
 
-fission httptrigger create --url /primjava --method GET --function prim
-##fission httptrigger create --url /hellogo --method GET --function hellogo
-##fission httptrigger create --url /hellopython --method GET --function hellopython
+fission httptrigger create --url /primjava --method POST --function primjava
+##fission httptrigger create --url /hellogo --method GET --function primgo
+##fission httptrigger create --url /hellopython --method GET --function primpython
