@@ -22,7 +22,7 @@ helm init --wait --upgrade --service-account tiller
 ##helm init -> csak akkor kell ha már van fent tiller és van servíz account nekik
 
 # Ezt kell megvárni, hogy végezzen!!! és előtte hogy a thiller pod feléledjen!!! ->
-helm install --name fission --namespace fission https://github.com/fission/fission/releases/download/1.0.0/fission-all-1.0.0.tgz
+helm install --name fission --namespace fission ./deploys/fission-all-1.0.0.tgz
 
 #helm install --name fission --namespace fission --set serviceType=NodePort,routerServiceType=NodePort https://github.com/fission/fission/releases/download/1.0.0/fission-all-1.0.0.tgz
 #kubectl apply -f https://github.com/fission/fission/releases/download/1.0.0/fission-all-1.0.0.yaml

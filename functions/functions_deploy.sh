@@ -3,7 +3,6 @@
 
 ## Java környzet
 fission env create --name nodejs --image fission/node-env
-fission env create --name nodejs --image fission/node-env
 
 ## Go környzet
 fission environment create --name go --image fission/go-env --builder fission/go-builder
