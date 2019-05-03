@@ -3,6 +3,10 @@
 echo "4 min wait time to pods start"
 sleep 4m
 
+## sososososo
+## apt install python-pip
+
+
 ## Java környzet
 fission environment create --name nodejs --image fission/node-env --mincpu 40 --maxcpu 80 --minmemory 64 --maxmemory 128 --poolsize 4
 
@@ -18,9 +22,12 @@ fission function create --name primjava --code ./functions/js/primjava.js --env 
 
 ## Go függvények
 fission function create --name hellogo --src ./functions/go/hellogo.go --entrypoint Handler --env go --minscale 1 --maxscale 5  --executortype newdeploy
+fission function create --name primgo --src ./functions/go/primgo.go --entrypoint Handler --env go --minscale 1 --maxscale 5  --executortype newdeploy
+
 
 ## Python fügvények
 fission function create --name hellopython --code ./functions/python/hellopython.py --env python --minscale 1 --maxscale 5  --executortype newdeploy
+fission function create --name primpython --code ./functions/python/primpython.py --env python --minscale 1 --maxscale 5  --executortype newdeploy
 
 ## HTTP Triggerek
 fission httptrigger create --url /hellojava --method GET --function hellojava
@@ -28,5 +35,5 @@ fission httptrigger create --url /hellogo --method GET --function hellogo
 fission httptrigger create --url /hellopython --method GET --function hellopython
 
 fission httptrigger create --url /primjava --method POST --function primjava
-##fission httptrigger create --url /primgo --method POST --function primgo
-##fission httptrigger create --url /primpython --method POST --function primpython
+fission httptrigger create --url /primgo --method POST --function primgo
+fission httptrigger create --url /primpython --method POST --function primpython
