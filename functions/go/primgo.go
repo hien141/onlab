@@ -29,12 +29,6 @@ func main() {
 }
 
 func Handler(rw http.ResponseWriter, req *http.Request) {
-    decoder := json.NewDecoder(req.Body)
-    var t test_struct
-    err := decoder.Decode(&t)
-    if err != nil {
-        panic(err)
-	}
-	log.Println(t.Test)
-	io.WriteString(rw, "poktmo")
+    id := r.PostFormValue("id")
+	io.WriteString(rw, "pokemon")
 }
