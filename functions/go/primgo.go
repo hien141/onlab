@@ -28,7 +28,7 @@ func main() {
     }
 }
 
-func ExampleHandler(rw http.ResponseWriter, req *http.Request) {
+func Handler(rw http.ResponseWriter, req *http.Request) {
     decoder := json.NewDecoder(req.Body)
     var t test_struct
     err := decoder.Decode(&t)

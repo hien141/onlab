@@ -1,5 +1,4 @@
-import flask
-from flask import request, json
+from flask import Flask, session, redirect, url_for, escape, request, json
 
 
 def is_prime(n):
@@ -10,15 +9,9 @@ def is_prime(n):
 
 
 def main():
-        # req = request.get_json()
-        eredmeny = 100
-        # number = flask.Response("reg.id")
-        number = 100
-        for i in range(1, number):
-                if is_prime(i):
-                        eredmeny = i
-        return eredmeny
-
-
-szam = main()
-print(szam)
+    id = int(json.loads(request.data)['id'])
+    eredmeny = 0
+    for i in range(1, id):
+        if is_prime(i):
+            eredmeny = i
+    return str(eredmeny)
