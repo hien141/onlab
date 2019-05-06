@@ -3,38 +3,38 @@
 echo "4 min wait time to pods start"
 sleep 4m
 
-## Java környzet
-fission env create --name nodejs --image fission/node-env --mincpu 40 --maxcpu 80 --poolsize 4
+## Java kornyzet
+fission env create --name knodejs --image fission/node-env --mincpu 40 --maxcpu 80 --poolsize 4
 
-## Go környzet
-fission env create --name go --image fission/go-env --builder fission/go-builder --mincpu 40 --maxcpu 80 --poolsize 4
+## Go kornyzet
+fission env create --name kgo --image fission/go-env --builder fission/go-builder --mincpu 40 --maxcpu 80 --poolsize 4
 
-## Python környezet
-fission env create --name python --image fission/python-env:latest --builder fission/python-builder:latest --mincpu 40 --maxcpu 80 --poolsize 4
+## Python kornyezet
+fission env create --name kpython --image fission/python-env:latest --builder fission/python-builder:latest --mincpu 40 --maxcpu 80 --poolsize 4
 
-## Java fügvények
-fission function create --name hellojava --code ./functions/js/hellojava.js --env nodejs --minscale 1 --maxscale 5  --executortype newdeploy
-fission function create --name primjava --code ./functions/js/primjava.js --env nodejs --minscale 1 --maxscale 5  --executortype newdeploy
-fission function create --name matrixjava --code ./functions/js/matrixjava.js --env nodejs --minscale 1 --maxscale 5  --executortype newdeploy
+## Java fugvenyek
+fission function create --name khellojava --code ./functions/js/hellojava.js --env knodejs --minscale 1 --maxscale 5  --executortype newdeploy
+fission function create --name kprimjava --code ./functions/js/primjava.js --env knodejs --minscale 1 --maxscale 5  --executortype newdeploy
+fission function create --name kmatrixjava --code ./functions/js/matrixjava.js --env knodejs --minscale 1 --maxscale 5  --executortype newdeploy
 
-## Go függvények
-fission function create --name hellogo --src ./functions/go/hellogo.go --entrypoint Handler --env go --minscale 1 --maxscale 5  --executortype newdeploy
-fission function create --name primgo --src ./functions/go/primgo.go --entrypoint Handler --env go --minscale 1 --maxscale 5  --executortype newdeploy
+## Go fuggvenyek
+fission function create --name khellogo --src ./functions/go/hellogo.go --entrypoint Handler --env kgo --minscale 1 --maxscale 5  --executortype newdeploy
+fission function create --name kprimgo --src ./functions/go/primgo.go --entrypoint Handler --env kgo --minscale 1 --maxscale 5  --executortype newdeploy
 
-## Python fügvények
-fission function create --name hellopython --code ./functions/python/hellopython.py --env python --minscale 1 --maxscale 5  --executortype newdeploy
-fission function create --name primpython --code ./functions/python/primpython.py --env python --minscale 1 --maxscale 5  --executortype newdeploy
-fission function create --name matrixpython --code ./functions/python/matrixpython.py --env python --minscale 1 --maxscale 5  --executortype newdeploy
+## Python fugvenyek
+fission function create --name khellopython --code ./functions/python/hellopython.py --env kpython --minscale 1 --maxscale 5  --executortype newdeploy
+fission function create --name kprimpython --code ./functions/python/primpython.py --env kpython --minscale 1 --maxscale 5  --executortype newdeploy
+fission function create --name kmatrixpython --code ./functions/python/matrixpython.py --env kpython --minscale 1 --maxscale 5  --executortype newdeploy
 
 ## HTTP Triggerek
-fission httptrigger create --url /hellojava --method GET --function hellojava
-fission httptrigger create --url /hellogo --method GET --function hellogo
-fission httptrigger create --url /hellopython --method GET --function hellopython
+fission httptrigger create --url /khellojava --method GET --function khellojava
+fission httptrigger create --url /khellogo --method GET --function khellogo
+fission httptrigger create --url /khellopython --method GET --function khellopython
 
-fission httptrigger create --url /matrixjava --method GET --function matrixjava
-fission httptrigger create --url /matrixgo --method GET --function matrixgo
-fission httptrigger create --url /matrixpython --method GET --function matrixpython
+fission httptrigger create --url /kmatrixjava --method GET --function kmatrixjava
+fission httptrigger create --url /kmatrixgo --method GET --function kmatrixgo
+fission httptrigger create --url /kmatrixpython --method GET --function kmatrixpython
 
-fission httptrigger create --url /primjava --method POST --function primjava
-fission httptrigger create --url /primgo --method POST --function primgo
-fission httptrigger create --url /primpython --method POST --function primpython
+fission httptrigger create --url /kprimjava --method POST --function kprimjava
+fission httptrigger create --url /kprimgo --method POST --function kprimgo
+fission httptrigger create --url /kprimpython --method POST --function kprimpython

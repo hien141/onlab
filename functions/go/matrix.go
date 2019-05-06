@@ -28,7 +28,6 @@ func main() {
 
 	twoDimensionalMatrices := [3][3][3]int{m1, m2, m3}
 
-	matrixNames := []string{"MATRIX1", "MATRIX2", "MATRIX3 = MATRIX1*MATRIX2"}
 	for index, m := range twoDimensionalMatrices {
 		fmt.Println(matrixNames[index],":")
 		showMatrixElements(m)
