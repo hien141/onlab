@@ -1,5 +1,5 @@
 #!/bin/bash
-# @author: Kurucz Gabor
+# @author: Kurucz Gabor and Hoang Tran Quang Hien
 # @description: Fission Installer
 # @created: 2019-03-05
 # @version: 1.0
