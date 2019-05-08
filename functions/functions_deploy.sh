@@ -4,13 +4,13 @@ echo "4 min wait time to pods start"
 sleep 4m
 
 ## Java kornyzet
-fission env create --name knodejs --image fission/node-env --mincpu 40 --maxcpu 80 --poolsize 4
+fission env create --name knodejs --image fission/node-env --mincpu 40 --maxcpu 400 --poolsize 4
 
 ## Go kornyzet
-fission env create --name kgo --image fission/go-env --builder fission/go-builder --mincpu 40 --maxcpu 80 --poolsize 4
+fission env create --name kgo --image fission/go-env --builder fission/go-builder --mincpu 40 --maxcpu 400 --poolsize 4
 
 ## Python kornyezet
-fission env create --name kpython --image fission/python-env:latest --builder fission/python-builder:latest --mincpu 40 --maxcpu 80 --poolsize 4
+fission env create --name kpython --image fission/python-env --mincpu 40 --maxcpu 400 --poolsize 4
 
 ## Java fugvenyek
 fission function create --name khellojava --code ./functions/js/hellojava.js --env knodejs --minscale 1 --maxscale 5  --executortype newdeploy
