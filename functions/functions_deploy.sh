@@ -4,37 +4,37 @@ echo "4 min wait time to pods start"
 sleep 4m
 
 ## Java kornyzet
-fission env create --name knodejs --image fission/node-env --mincpu 40 --maxcpu 400 --poolsize 4
+fission env create --name hnodejs --image fission/node-env
 
 ## Go kornyzet
-fission env create --name kgo --image fission/go-env --builder fission/go-builder --mincpu 40 --maxcpu 400 --poolsize 4
+fission env create --name hgo --image fission/go-env --builder fission/go-builder
 
 ## Python kornyezet
-fission env create --name kpython --image fission/python-env --mincpu 40 --maxcpu 400 --poolsize 4
+fission env create --name hpython --image fission/python-env
 
 ## Java fugvenyek
-fission function create --name khellojava --code ./functions/js/hellojava.js --env knodejs --minscale 1 --maxscale 5  --executortype newdeploy
-fission function create --name kprimjava --code ./functions/js/primjava.js --env knodejs --minscale 1 --maxscale 5  --executortype newdeploy
-fission function create --name kmatrixjava --code ./functions/js/matrixjava.js --env knodejs --minscale 1 --maxscale 5  --executortype newdeploy
+fission function create --name hhellojava --code ./functions/js/hellojava.js --env hnodejs 
+fission function create --name hprimjava --code ./functions/js/primjava.js --env hnodejs 
+fission function create --name hmatrixjava --code ./functions/js/matrixjava.js --env hnodejs
 
 ## Go fuggvenyek
-fission function create --name khellogo --src ./functions/go/hellogo.go --entrypoint Handler --env kgo --minscale 1 --maxscale 5  --executortype newdeploy
-fission function create --name kprimgo --src ./functions/go/primgo.go --entrypoint Handler --env kgo --minscale 1 --maxscale 5  --executortype newdeploy
+fission function create --name hhellogo --src ./functions/go/hellogo.go --entrypoint Handler
+fission function create --name hprimgo --src ./functions/go/primgo.go --entrypoint Handler 
 
 ## Python fugvenyek
-fission function create --name khellopython --code ./functions/python/hellopython.py --env kpython --minscale 1 --maxscale 5  --executortype newdeploy
-fission function create --name kprimpython --code ./functions/python/primpython.py --env kpython --minscale 1 --maxscale 5  --executortype newdeploy
-fission function create --name kmatrixpython --code ./functions/python/matrixpython.py --env kpython --minscale 1 --maxscale 5  --executortype newdeploy
+fission function create --name hhellopython --code ./functions/python/hellopython.py --env hpython
+fission function create --name hprimpython --code ./functions/python/primpython.py --env hpython 
+fission function create --name hmatrixpython --code ./functions/python/matrixpython.py --env hpython
 
 ## HTTP Triggerek
-fission httptrigger create --url /khellojava --method GET --function khellojava
-fission httptrigger create --url /khellogo --method GET --function khellogo
-fission httptrigger create --url /khellopython --method GET --function khellopython
+fission httptrigger create --url /hhellojava --method GET --function hhellojava
+fission httptrigger create --url /hhellogo --method GET --function hhellogo
+fission httptrigger create --url /hhellopython --method GET --function hhellopython
 
-fission httptrigger create --url /kmatrixjava --method GET --function kmatrixjava
-fission httptrigger create --url /kmatrixgo --method GET --function kmatrixgo
-fission httptrigger create --url /kmatrixpython --method GET --function kmatrixpython
+fission httptrigger create --url /hmatrixjava --method GET --function hmatrixjava
+fission httptrigger create --url /hmatrixgo --method GET --function hmatrixgo
+fission httptrigger create --url /hmatrixpython --method GET --function hmatrixpython
 
-fission httptrigger create --url /kprimjava --method POST --function kprimjava
-fission httptrigger create --url /kprimgo --method POST --function kprimgo
-fission httptrigger create --url /kprimpython --method POST --function kprimpython
+fission httptrigger create --url /hprimjava --method POST --function hprimjava
+fission httptrigger create --url /hprimgo --method POST --function hprimgo
+fission httptrigger create --url /hprimpython --method POST --function hprimpython
