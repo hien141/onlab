@@ -18,8 +18,8 @@ fission function create --name hprimjava --code ./functions/js/primjava.js --env
 fission function create --name hmatrixjava --code ./functions/js/matrixjava.js --env hnodejs
 
 ## Go fuggvenyek
-fission function create --name hhellogo --src ./functions/go/hellogo.go --entrypoint Handler
-fission function create --name hprimgo --src ./functions/go/primgo.go --entrypoint Handler 
+fission function create --name hhellogo --src ./functions/go/hellogo.go --entrypoint Handler --env hgo
+fission function create --name hprimgo --src ./functions/go/primgo.go --entrypoint Handler --env hgo
 
 ## Python fugvenyek
 fission function create --name hhellopython --code ./functions/python/hellopython.py --env hpython
